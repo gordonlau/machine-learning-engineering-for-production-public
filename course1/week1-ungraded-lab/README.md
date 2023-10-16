@@ -48,10 +48,10 @@ Conda includes a lot of libraries so if you are only installing it to complete t
  
 ### 1. Creating a virtual Environment
  
-Now we assume that you either successfully installed conda or that it was previously available in your system. The first step is  creating a new developing environment. Let's set a new environment with python 3.7 with this command:
+Now we assume that you either successfully installed conda or that it was previously available in your system. The first step is  creating a new developing environment. Let's set a new environment with python 3.8 with this command:
  
 ```bash
-conda create --name mlep-w1-lab python=3.7
+conda create --name mlep-w1-lab python=3.8
 ```
  
 After successfully creating the environment, you need to activate it by issuing this command:
@@ -61,10 +61,16 @@ conda activate mlep-w1-lab
 ```
  
 At this point, you will do all your libraries installation and work in this environment. So, whenever working on this ungraded lab, check the mlep-w1-lab environment is active.
+
+**Note**: If you have a Mac M1 then read this [guide](./mac_m1.md) before doing the next steps or try the version of this lab that is hosted in Coursera.
  
 ### 2. Installing dependencies using PIP 
  
-Before proceeding, double check that you are currently on the `week1-ungraded-lab` directory, which includes the `requirements.txt` file. This file lists all the required dependencies and their respective versions. Now use the following command to install the required dependencies:
+Before proceeding, double check that you are currently on the `week1-ungraded-lab` directory, which includes the `requirements.txt` file. This file lists all the required dependencies and their respective versions. 
+
+If you are on a Mac M1 be sure to have installed Tensorflow and OpenCV as described in the [guide](./mac_m1.md) and deleted these libraries from the `requirements.txt` file.
+
+Now use the following command to install the required dependencies:
  
 ```bash
 pip install -r requirements.txt
@@ -78,7 +84,7 @@ Jupyter lab was installed during the previous step so you can launch it with thi
 ```bash
 jupyter lab
 ```
-After execution, you will see some information printed on the terminal. Usually you will need to authenticate to use Jupyter lab. For this, copy the token that appears on your terminal, head over to [http://localhost:8888/](http://localhost:8888/) and paste it there. Your terminal's output should look very similar to the next image, in which the token has been highlighted for reference:
+After execution, you will see some information printed on the terminal. Usually you will need to authenticate to use Jupyter lab. For this, copy the token that appears on your terminal, head over to [http://localhost:8888/lab](http://localhost:8888/lab) and paste it there. Your terminal's output should look very similar to the next image, in which the token has been highlighted for reference:
 
 
 ![Token in terminal](./assets/token.png)
@@ -104,7 +110,10 @@ To stop jupyter lab once you are done with the lab just press `Ctrl + C` twice.
 [Docker](https://www.docker.com/) is a tool that allows you to ship your software along with all the dependencies that it needs to run. You can download the free version [here](https://www.docker.com/products/docker-desktop). 
 
 Installing Docker is straightforward for Linux and Mac users but might be more challenging for Windows users. If you use Windows we recommend you stick with the first method to run this ungraded lab. However if you want to go through with this method you will need to install [Docker Desktop](https://docs.docker.com/docker-for-windows/install/) and [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) (Windows Subsystem for Linux 2). By doing this you will enable a real Linux kernel inside your Windows OS and will get full usage out of Docker. For a better experience we also recommend to install the [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701). This is a great setup to do machine learning related work on Windows but it requires a lot more setup.
- 
+
+**Note:** If you are on a M1 Mac use the `Creating a virtual Environment` method or try the version of this lab that is hosted in Coursera.
+
+
 ### 1. Pulling the image from Docker hub
 
 Images are an important concept within the Docker ecosystem. You can think of them as the compilation of all the elements (libraries, files, etc) needed for your software to run. 
@@ -130,7 +139,7 @@ Let's break down this command and its flags:
 - -p: Allows you to map a port in your computer to a port in the container. In this case we need a port for the Jupyter server and another for the server you will run within the ungraded lab.
 - --mount: Allows you to mount a directory in your local filesystem within the container. This is very important because if no mounts are present, changes to files will not persist after the container is deleted. In this case we are mounting the current directory `week1-ungraded-lab` onto the `/home/jovyan/work` directory inside the container.
  
-When the container starts running you will see some information being printed in the terminal. Usually you will need to authenticate to use Jupyter lab, for this copy the token that appears on your terminal, head over to [http://localhost:8888/](http://localhost:8888/) and paste it there.
+When the container starts running you will see some information being printed in the terminal. Usually you will need to authenticate to use Jupyter lab, for this copy the token that appears on your terminal, head over to [http://localhost:8888/lab](http://localhost:8888/lab) and paste it there.
 
 Your terminal's output should look very similar to the next image, in which the token has been highlighted for reference:
 
